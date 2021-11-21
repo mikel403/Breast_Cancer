@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Conjunto de Datos de Ecografías de Mama</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+		<link rel="stylesheet" type="text/css" href="estilo.css">
+		<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+		<script src="main.js"></script>
+	</head>
+	<body>
+		<div class="wrap">
+			<ul class="tabs">
+				<li><a href="#tab1"><span class="tab-text">Paciente</span></a></li>
+				<li><a href="#tab2"><span class="tab-text">Resultados Previos</span></a></li>
+				<li><a href="#tab3"><span class="tab-text">Ecografía</span></a></li>
+				<li><a href="#tab4"><span class="tab-text">Información Adicional</span></a></li>
+			</ul>
+
+			<form class="secciones" action="guardar.php" method="POST">
+				<section id="tab1">
+					<h1>Información del Paciente</h1>
+					<label for="id">Identificación</label>
+					<input type="text" name="id" placeholder="Identificación" required>
+					<br>
+					<label for="edad">Edad</label>
+					<input type="text" name="edad" placeholder="Edad">
+					<br>
+					<label for="sexo">Sexo</label>
+					<select name="sexo">
+  						<option value="mujer" selected>Mujer</option>
+  						<option value="varon">Varon</option>
+  						<option value=""></option>
+					</select>
+					<br>
+					<label for="consulta">Tipo de Consulta</label>
+					<select name="consulta">
+						<option value=""></option>
+  						<option value="cribado">Cribado</option>
+  						<option value="palpable">Nódulo palpable</option>
+  						<option value="seguimiento">Seguimiento</option>
+					</select>
+					<br>
+					<label for="numeroseguimiento">Número de exploración</label>
+					<select name="numeroseguimiento">
+						<option value="1" selected>1</option>
+  						<option value="2">2</option>
+  						<option value="3">3</option>
+  						<option value="4">4</option>
+  						<option value="mas">Más de 4</option>
+					</select>
+					<br>
+
+					<label for="alteraciones">Alteraciones en la mama</label>
+					<select name="alteraciones">
+  						<option value="" selected></option>
+  						<option value="protesis">Prótesis</option>
+					</select>
+					<br>
+				</section>
+				
+
+				<section id=tab2>
+					<h1>Antecedentes del Paciente</h1>
+					<label for="mama">Mama con antecedentes</label>
+					<select name="mama">
+						<option value=""></option>
+  						<option value="izquierda">Izquierda</option>
+  						<option value="derecha">Derecha</option>
+  						<option value="ambas">Ambas</option>
+					</select>
+					<br>
+
+					<label for="antecedentes">Tipo de antecedentes</label>
+					<select name="antecedentes">
+						<option value=""></option>
+  						<option value="birads3">Birads3</option>
+  						<option value="birads4">Birads4 extirpado</option>
+  						<option value="conservadora">Cirugía Conservadora</option>
+  						<option value="mastectomia">Mastectomía</option>
+					</select>
+					<br>
+
+					<h1>Resultados de Pruebas que Acompañan a la Ecografía</h1>
+					<label for="resultados_mamografia">Resultados de Mamografía</label>
+					<select name="resultados_mamografia">
+						<option value=""></option>
+  						<option value="sin hallazgos">Sin Hallazgos</option>
+  						<option value="Nodulo">Nódulo sospechoso</option>
+					</select>
+					<br>
+					
+					<label for="resultados_resonancia">Resultados de Resonancia Magnética</label>
+					<select name="resultados_resonancia">
+						<option value=""></option>
+  						<option value="sin hallazgos">Sin Hallazgos</option>
+  						<option value="Nodulo">Nódulo sospechoso</option>
+					</select>
+					<br>
+
+				</section>
+
+				<section class="eco" id=tab3>
+					<h1>Resultados de la Ecografía</h1>
+					<label for="mama_eco">Mama</label>
+					<select name="mama_eco">
+						<option value=""></option>
+  						<option value="izquierda">Izquierda</option>
+  						<option value="derecha">Derecha</option>
+					</select>
+					<br>
+					<label for="zona">Cuadrante Mamario</label>
+					<select name="zona">
+						<option value=""></option>
+  						<option value="cse">Superior Externo</option>
+  						<option value="csi">Superior Interno</option>
+  						<option value="cie">Inferior Externo</option>
+  						<option value="cii">Inferior Interno</option>
+					</select>
+					<br>
+					<label for="tejido">Tipo de tejido predominante</label>
+					<select name="tejido">
+						<option value=""></option>
+  						<option value="graso">Graso Homogéneo</option>
+  						<option value="glandular-homogeneo">Glandular Homogéneo</option>
+  						<option value="glandular-heterogeneo">Glandular Heterogéneo</option>
+					</select>
+					<br>
+
+					<label for="nodulos">Número de Nódulos</label>
+					<select name="nodulos" id= "numeronodulos">
+						<option value="0">0</option>
+  						<option value="1">1</option>
+  						<option value="2">2</option>
+  						<option value="3">3</option>
+  						<option value="4">4</option>
+  						<option value="5">5</option>
+					</select>
+					<br>
+					<article class="descripcionnodulos">
+						<H3>Características del nódulo 1</H3>
+						<label for="forma">Forma</label>
+						<select name="forma">
+							<option value=""></option>
+  							<option value="ovalada">Ovalada</option>
+  							<option value="redondeada">Redondeada</option>
+  							<option value="lobulada">Lobulada</option>
+  							<option value="irregular">Irregular</option>
+						</select>
+						<br>
+						<label for="margen">Margen</label>
+						<select name="margen">
+							<option value=""></option>
+  							<option value="circunscrito">Circunscrito</option>
+  							<option value="indefinido">Indefinido</option>
+  							<option value="angulado">Angulado</option>
+  							<option value="microlobulado">Microlobulado</option>
+  							<option value="espiculado">Espiculado</option>
+						</select>
+						<br>
+						<label for="orientacion">Orientación sobre la piel</label>
+						<select name="orientacion">
+							<option value=""></option>
+  							<option value="paralela">Paralela</option>
+  							<option value="antiparalela">Antiparalela</option>
+						</select>
+						<br>
+						<label for="ecogenicidad">Ecogenicidad</label>
+						<select name="ecogenicidad">
+							<option value=""></option>
+  							<option value="anecoica">Anecoica</option>
+  							<option value="hipoecoica">Hipoecoica</option>
+  							<option value="hiperecoica">Hiperecoica</option>
+  							<option value="isoecoica">Isoecoica</option>
+  							<option value="heterogenea">Heterogénea</option>
+  							<option value="compleja">Compleja</option>
+						</select>
+						<br>
+						<label for="posterior">Característica posterior</label>
+						<select name="posterior">
+							<option value=""></option>
+  							<option value="ninguna">Sin Cambios</option>
+  							<option value="refuerzo">Refuerzo</option>
+  							<option value="sombreado">Sombreado</option>
+  							<option value="mixto">Mixto</option>
+						</select>
+						<br>
+						<label for="halo">Halo Ecogénico</label>
+						<select name="halo">
+							<option value="no" selected>No</option>
+  							<option value="si">Sí</option>
+						</select>
+						<br>
+
+						<label for="sugestividad">Sugestivo de</label>
+						<select name="sugestividad">
+							<option value=""></option>
+  							<option value="quiste simple">Quiste Simple</option>
+  							<option value="quiste complicado">Quiste Complicado</option>
+  							<option value="quiste complejo">Quiste Complejo</option>
+  							<option value="fibroadenoma">Fibroadenoma</option>
+  							<option value="in situ">Carcinoma In Situ</option>
+  							<option value="ductal">Carcinoma Ductal Invasivo</option>
+  							<option value="lobulillar">Carcinoma Lobulillar Invasivo</option>
+						</select>
+						<br>
+
+						<label for="birads">Birads</label>
+						<select name="birads">
+							<option value=""></option>
+  							<option value="2">2</option>
+  							<option value="3">3</option>
+  							<option value="4a">4a</option>
+  							<option value="4b">4b</option>
+  							<option value="4c">4c</option>
+  							<option value="5">5</option>
+						</select>
+						<br>
+					</article>
+
+					<article class="descripcionnodulos" id='2'>
+						<H3>Características del nódulo 2</H3>
+						<label for="forma2">Forma</label>
+						<select name="forma2">
+							<option value=""></option>
+  							<option value="ovalada">Ovalada</option>
+  							<option value="redondeada">Redondeada</option>
+  							<option value="lobulada">Lobulada</option>
+  							<option value="irregular">Irregular</option>
+						</select>
+						<br>
+						<label for="margen2">Margen</label>
+						<select name="margen2">
+							<option value=""></option>
+  							<option value="circunscrito">Circunscrito</option>
+  							<option value="indefinido">Indefinido</option>
+  							<option value="angulado">Angulado</option>
+  							<option value="microlobulado">Microlobulado</option>
+  							<option value="espiculado">Espiculado</option>
+						</select>
+						<br>
+						<label for="orientacion2">Orientación sobre la piel</label>
+						<select name="orientacion2">
+							<option value=""></option>
+  							<option value="paralela">Paralela</option>
+  							<option value="antiparalela">Antiparalela</option>
+						</select>
+						<br>
+						<label for="ecogenicidad2">Ecogenicidad</label>
+						<select name="ecogenicidad2">
+							<option value=""></option>
+  							<option value="paralela">Anecoica</option>
+  							<option value="hipoecoica">Hipoecoica</option>
+  							<option value="hiperecoica">Hiperecoica</option>
+  							<option value="isoecoica">Isoecoica</option>
+  							<option value="heterogenea">Heterogénea</option>
+  							<option value="compleja">Compleja</option>
+						</select>
+						<br>
+						<label for="posterior2">Característica posterior</label>
+						<select name="posterior2">
+							<option value=""></option>
+  							<option value="ninguna">Sin Cambios</option>
+  							<option value="refuerzo">Refuerzo</option>
+  							<option value="sombreado">Sombreado</option>
+  							<option value="mixto">Mixto</option>
+						</select>
+						<br>
+						<label for="halo2">Halo Ecogénico</label>
+						<select name="halo2">
+							<option value="no" selected>No</option>
+  							<option value="si">Sí</option>
+						</select>
+						<br>
+
+						<label for="sugestividad2">Sugestivo de</label>
+						<select name="sugestividad2">
+							<option value=""></option>
+  							<option value="quiste simple">Quiste Simple</option>
+  							<option value="quiste complicado">Quiste Complicado</option>
+  							<option value="quiste complejo">Quiste Complejo</option>
+  							<option value="fibroadenoma">Fibroadenoma</option>
+  							<option value="in situ">Carcinoma In Situ</option>
+  							<option value="ductal">Carcinoma Ductal Invasivo</option>
+  							<option value="lobulillar">Carcinoma Lobulillar Invasivo</option>
+						</select>
+						<br>
+
+						<label for="birads2">Birads</label>
+						<select name="birads2">
+							<option value=""></option>
+  							<option value="2">2</option>
+  							<option value="3">3</option>
+  							<option value="4a">4a</option>
+  							<option value="4b">4b</option>
+  							<option value="4c">4c</option>
+  							<option value="5">5</option>
+						</select>
+						<br>
+					</article>	
+
+					<article class="descripcionnodulos" id="3">
+						<H3>Caracteriíticas del nódulo 3</H3>
+						<label for="forma3">Forma</label>
+						<select name="forma3">
+							<option value=""></option>
+  							<option value="ovalada">Ovalada</option>
+  							<option value="redondeada">Redondeada</option>
+  							<option value="lobulada">Lobulada</option>
+  							<option value="irregular">Irregular</option>
+						</select>
+						<br>
+						<label for="margen3">Margen</label>
+						<select name="margen3">
+							<option value=""></option>
+  							<option value="circunscrito">Circunscrito</option>
+  							<option value="indefinido">Indefinido</option>
+  							<option value="angulado">Angulado</option>
+  							<option value="microlobulado">Microlobulado</option>
+  							<option value="espiculado">Espiculado</option>
+						</select>
+						<br>
+						<label for="orientacion3">Orientación sobre la piel</label>
+						<select name="orientacion3">
+							<option value=""></option>
+  							<option value="paralela">Paralela</option>
+  							<option value="antiparalela">Antiparalela</option>
+						</select>
+						<br>
+						<label for="ecogenicidad3">Ecogenicidad</label>
+						<select name="ecogenicidad3">
+							<option value=""></option>
+  							<option value="paralela">Anecoica</option>
+  							<option value="hipoecoica">Hipoecoica</option>
+  							<option value="hiperecoica">Hiperecoica</option>
+  							<option value="isoecoica">Isoecoica</option>
+  							<option value="heterogenea">Heterogénea</option>
+  							<option value="compleja">Compleja</option>
+						</select>
+						<br>
+						<label for="posterior3">Característica posterior</label>
+						<select name="posterior3">
+							<option value=""></option>
+  							<option value="ninguna">Sin Cambios</option>
+  							<option value="refuerzo">Refuerzo</option>
+  							<option value="sombreado">Sombreado</option>
+  							<option value="mixto">Mixto</option>
+						</select>
+						<br>
+						<label for="halo3">Halo Ecogénico</label>
+						<select name="halo3">
+							<option value="no" selected>No</option>
+  							<option value="si">Sí</option>
+						</select>
+						<br>
+
+						<label for="sugestividad3">Sugestivo de</label>
+						<select name="sugestividad3">
+							<option value=""></option>
+  							<option value="quiste simple">Quiste Simple</option>
+  							<option value="quiste complicado">Quiste Complicado</option>
+  							<option value="quiste complejo">Quiste Complejo</option>
+  							<option value="fibroadenoma">Fibroadenoma</option>
+  							<option value="in situ">Carcinoma In Situ</option>
+  							<option value="ductal">Carcinoma Ductal Invasivo</option>
+  							<option value="lobulillar">Carcinoma Lobulillar Invasivo</option>
+						</select>
+						<br>
+
+						<label for="birads3">Birads</label>
+						<select name="birads3">
+							<option value=""></option>
+  							<option value="2">2</option>
+  							<option value="3">3</option>
+  							<option value="4a">4a</option>
+  							<option value="4b">4b</option>
+  							<option value="4c">4c</option>
+  							<option value="5">5</option>
+						</select>
+						<br>
+					</article>	
+
+					<article class="descripcionnodulos" id='4'>
+						<H3>Características del nodulo 4</H3>
+						<label for="forma4">Forma</label>
+						<select name="forma4">
+							<option value=""></option>
+  							<option value="ovalada">Ovalada</option>
+  							<option value="redondeada">Redondeada</option>
+  							<option value="lobulada">Lobulada</option>
+  							<option value="irregular">Irregular</option>
+						</select>
+						<br>
+						<label for="margen4">Margen</label>
+						<select name="margen4">
+							<option value=""></option>
+  							<option value="circunscrito">Circunscrito</option>
+  							<option value="indefinido">Indefinido</option>
+  							<option value="angulado">Angulado</option>
+  							<option value="microlobulado">Microlobulado</option>
+  							<option value="espiculado">Espiculado</option>
+						</select>
+						<br>
+						<label for="orientacion4">Orientación sobre la piel</label>
+						<select name="orientacion4">
+							<option value=""></option>
+  							<option value="paralela">Paralela</option>
+  							<option value="antiparalela">Antiparalela</option>
+						</select>
+						<br>
+						<label for="ecogenicidad4">Ecogenicidad</label>
+						<select name="ecogenicidad4">
+							<option value=""></option>
+  							<option value="paralela">Anecoica</option>
+  							<option value="hipoecoica">Hipoecoica</option>
+  							<option value="hiperecoica">Hiperecoica</option>
+  							<option value="isoecoica">Isoecoica</option>
+  							<option value="heterogenea">Heterogenea</option>
+  							<option value="compleja">Compleja</option>
+						</select>
+						<br>
+						<label for="posterior4">Característica posterior</label>
+						<select name="posterior4">
+							<option value=""></option>
+  							<option value="ninguna">Sin Cambios</option>
+  							<option value="refuerzo">Refuerzo</option>
+  							<option value="sombreado">Sombreado</option>
+  							<option value="mixto">Mixto</option>
+						</select>
+						<br>
+						<label for="halo4">Halo Ecogénico</label>
+						<select name="halo4">
+							<option value="no" selected>No</option>
+  							<option value="si">Sí</option>
+						</select>
+						<br>
+
+						<label for="sugestividad4">Sugestivo de</label>
+						<select name="sugestividad4">
+							<option value=""></option>
+  							<option value="quiste simple">Quiste Simple</option>
+  							<option value="quiste complicado">Quiste Complicado</option>
+  							<option value="quiste complejo">Quiste Complejo</option>
+  							<option value="fibroadenoma">Fibroadenoma</option>
+  							<option value="in situ">Carcinoma In Situ</option>
+  							<option value="ductal">Carcinoma Ductal Invasivo</option>
+  							<option value="lobulillar">Carcinoma Lobulillar Invasivo</option>
+						</select>
+						<br>
+
+						<label for="birads4">Birads</label>
+						<select name="birads4">
+							<option value=""></option>
+  							<option value="2">2</option>
+  							<option value="3">3</option>
+  							<option value="4a">4a</option>
+  							<option value="4b">4b</option>
+  							<option value="4c">4c</option>
+  							<option value="5">5</option>
+						</select>
+						<br>
+					</article>
+
+					<article class="descripcionnodulos" id='5'>
+						<H3>Características del nodulo 5</H3>
+						<label for="forma5">Forma</label>
+						<select name="forma5">
+							<option value=""></option>
+  							<option value="ovalada">Ovalada</option>
+  							<option value="redondeada">Redondeada</option>
+  							<option value="lobulada">Lobulada</option>
+  							<option value="irregular">Irregular</option>
+						</select>
+						<br>
+						<label for="margen5">Margen</label>
+						<select name="margen5">
+							<option value=""></option>
+  							<option value="circunscrito">Circunscrito</option>
+  							<option value="indefinido">Indefinido</option>
+  							<option value="angulado">Angulado</option>
+  							<option value="microlobulado">Microlobulado</option>
+  							<option value="espiculado">Espiculado</option>
+						</select>
+						<br>
+						<label for="orientacion5">Orientación sobre la piel</label>
+						<select name="orientacion5">
+							<option value=""></option>
+  							<option value="paralela">Paralela</option>
+  							<option value="antiparalela">Antiparalela</option>
+						</select>
+						<br>
+						<label for="ecogenicidad5">Ecogenicidad</label>
+						<select name="ecogenicidad5">
+							<option value=""></option>
+  							<option value="paralela">Anecoica</option>
+  							<option value="hipoecoica">Hipoecoica</option>
+  							<option value="hiperecoica">Hiperecoica</option>
+  							<option value="isoecoica">Isoecoica</option>
+  							<option value="heterogenea">Heterogénea</option>
+  							<option value="compleja">Compleja</option>
+						</select>
+						<br>
+						<label for="posterior5">Característica posterior</label>
+						<select name="posterior5">
+							<option value=""></option>
+  							<option value="ninguna">Sin Cambios</option>
+  							<option value="refuerzo">Refuerzo</option>
+  							<option value="sombreado">Sombreado</option>
+  							<option value="mixto">Mixto</option>
+						</select>
+						<br>
+						<label for="halo5">Halo Ecogénico</label>
+						<select name="halo5">
+							<option value="no" selected>No</option>
+  							<option value="si">Sí</option>
+						</select>
+						<br>
+
+						<label for="sugestividad5">Sugestivo de</label>
+						<select name="sugestividad5">
+							<option value=""></option>
+  							<option value="quiste simple">Quiste Simple</option>
+  							<option value="quiste complicado">Quiste Complicado</option>
+  							<option value="quiste complejo">Quiste Complejo</option>
+  							<option value="fibroadenoma">Fibroadenoma</option>
+  							<option value="in situ">Carcinoma In Situ</option>
+  							<option value="ductal">Carcinoma Ductal Invasivo</option>
+  							<option value="lobulillar">Carcinoma Lobulillar Invasivo</option>
+						</select>
+						<br>
+
+						<label for="birads5">Birads</label>
+						<select name="birads5">
+							<option value=""></option>
+  							<option value="2">2</option>
+  							<option value="3">3</option>
+  							<option value="4a">4a</option>
+  							<option value="4b">4b</option>
+  							<option value="4c">4c</option>
+  							<option value="5">5</option>
+						</select>
+						<br>
+					</article>	
+
+
+
+	
+
+				</section>
+
+				<section class="seccion" id=tab4>
+					<h1>Información Adicional</h1>
+					<label for="mensaje">Información que se quiera añadir sobre la paciente o la ecografía</label>
+					<br>
+					<textarea name="mensaje" placeholder="Mensaje"></textarea>
+				</section>
+				<input type="submit" value="Enviar">
+			</form>
+		
+
+
+		</div>
+	</body>
+</html>

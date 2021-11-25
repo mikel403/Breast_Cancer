@@ -18,12 +18,12 @@
 
 			<form class="secciones" action="guardar.php" method="POST">
 				<section id="tab1">
-					<h1>Información del Paciente</h1>
+					<h1>Información del paciente</h1>
 					<label for="id">Identificación</label>
-					<input type="text" name="id" placeholder="Identificación" required>
+					<input type="text" name="id" placeholder="identificación" required>
 					<br>
 					<label for="edad">Edad</label>
-					<input type="text" name="edad" placeholder="Edad">
+					<input type="text" name="edad" placeholder="edad">
 					<br>
 					<label for="sexo">Sexo</label>
 					<select name="sexo">
@@ -32,12 +32,12 @@
   						<option value=""></option>
 					</select>
 					<br>
-					<label for="consulta">Tipo de Consulta</label>
+					<label for="consulta">Tipo de consulta</label>
 					<select name="consulta">
 						<option value=""></option>
   						<option value="cribado">Cribado</option>
   						<option value="palpable">Nódulo palpable</option>
-  						<option value="seguimiento">Seguimiento</option>
+  						<option value="revision">Revisión</option>
 					</select>
 					<br>
 					<label for="numeroseguimiento">Número de exploración</label>
@@ -60,7 +60,7 @@
 				
 
 				<section id=tab2>
-					<h1>Antecedentes del Paciente</h1>
+					<h1>Antecedentes del paciente</h1>
 					<label for="mama">Mama con antecedentes</label>
 					<select name="mama">
 						<option value=""></option>
@@ -79,9 +79,17 @@
   						<option value="mastectomia">Mastectomía</option>
 					</select>
 					<br>
+					<label for="fecha1">Fecha de la primera revisión</label>
+					<input type="datetime" name="fecha1" placeholder="fecha">
+					<br>
+					<label for="fecha2">Fecha de la última revisión</label>
+					<input type="datetime" name="fecha2" placeholder="fecha">
+					<br>
 
-					<h1>Resultados de Pruebas que Acompañan a la Ecografía</h1>
-					<label for="resultados_mamografia">Resultados de Mamografía</label>
+
+
+					<h1>Resultados de pruebas que acompañan a la ecografía</h1>
+					<label for="resultados_mamografia">Resultados de mamografía</label>
 					<select name="resultados_mamografia">
 						<option value=""></option>
   						<option value="sin hallazgos">Sin Hallazgos</option>
@@ -89,7 +97,7 @@
 					</select>
 					<br>
 					
-					<label for="resultados_resonancia">Resultados de Resonancia Magnética</label>
+					<label for="resultados_resonancia">Resultados de resonancia magnética</label>
 					<select name="resultados_resonancia">
 						<option value=""></option>
   						<option value="sin hallazgos">Sin Hallazgos</option>
@@ -100,23 +108,16 @@
 				</section>
 
 				<section class="eco" id=tab3>
-					<h1>Resultados de la Ecografía</h1>
-					<label for="mama_eco">Mama</label>
+					<h1>Resultados de la ecografía</h1>
+					<label for="mama_eco">Mama con nódulos</label>
 					<select name="mama_eco">
 						<option value=""></option>
   						<option value="izquierda">Izquierda</option>
   						<option value="derecha">Derecha</option>
+  						<option value="ambas">Ambas</option>
 					</select>
 					<br>
-					<label for="zona">Cuadrante Mamario</label>
-					<select name="zona">
-						<option value=""></option>
-  						<option value="cse">Superior Externo</option>
-  						<option value="csi">Superior Interno</option>
-  						<option value="cie">Inferior Externo</option>
-  						<option value="cii">Inferior Interno</option>
-					</select>
-					<br>
+
 					<label for="tejido">Tipo de tejido predominante</label>
 					<select name="tejido">
 						<option value=""></option>
@@ -126,7 +127,15 @@
 					</select>
 					<br>
 
-					<label for="nodulos">Número de Nódulos</label>
+					<label for="descripcionunica">Descripción única de la ecografía</label>
+					<select name="descripcionunica">
+						<option value=""></option>
+  						<option value="conglomerado">quistes simples milimétricos</option>
+  						<option value="glandula">glandula intramamaria</option>
+					</select>
+					<br>
+
+					<label for="nodulos">Número de nódulos</label>
 					<select name="nodulos" id= "numeronodulos">
 						<option value="0">0</option>
   						<option value="1">1</option>
@@ -138,6 +147,18 @@
 					<br>
 					<article class="descripcionnodulos">
 						<H3>Características del nódulo 1</H3>
+						<label for="zona">Cuadrante mamario</label>
+						<select name="zona">
+							<option value=""></option>
+  							<option value="cse">Superior Externo</option>
+  							<option value="csi">Superior Interno</option>
+  							<option value="cie">Inferior Externo</option>
+  							<option value="cii">Inferior Interno</option>
+						</select>
+						<br>
+						<label for="radial">Radial</label>
+						<input type="text" name="radial" placeholder="radial">
+						<br>
 						<label for="forma">Forma</label>
 						<select name="forma">
 							<option value=""></option>
@@ -184,7 +205,7 @@
   							<option value="mixto">Mixto</option>
 						</select>
 						<br>
-						<label for="halo">Halo Ecogénico</label>
+						<label for="halo">Halo ecogénico</label>
 						<select name="halo">
 							<option value="no" selected>No</option>
   							<option value="si">Sí</option>
@@ -219,6 +240,18 @@
 
 					<article class="descripcionnodulos" id='2'>
 						<H3>Características del nódulo 2</H3>
+						<label for="zona2">Cuadrante mamario</label>
+						<select name="zona2">
+							<option value=""></option>
+  							<option value="cse">Superior Externo</option>
+  							<option value="csi">Superior Interno</option>
+  							<option value="cie">Inferior Externo</option>
+  							<option value="cii">Inferior Interno</option>
+						</select>
+						<br>
+						<label for="radial2">Radial</label>
+						<input type="text" name="radial2" placeholder="radial">
+						<br>
 						<label for="forma2">Forma</label>
 						<select name="forma2">
 							<option value=""></option>
@@ -265,7 +298,7 @@
   							<option value="mixto">Mixto</option>
 						</select>
 						<br>
-						<label for="halo2">Halo Ecogénico</label>
+						<label for="halo2">Halo ecogénico</label>
 						<select name="halo2">
 							<option value="no" selected>No</option>
   							<option value="si">Sí</option>
@@ -300,6 +333,18 @@
 
 					<article class="descripcionnodulos" id="3">
 						<H3>Características del nódulo 3</H3>
+						<label for="zona3">Cuadrante mamario</label>
+						<select name="zona3">
+							<option value=""></option>
+  							<option value="cse">Superior Externo</option>
+  							<option value="csi">Superior Interno</option>
+  							<option value="cie">Inferior Externo</option>
+  							<option value="cii">Inferior Interno</option>
+						</select>
+						<br>
+						<label for="radial3">Radial</label>
+						<input type="text" name="radial3" placeholder="radial">
+						<br>
 						<label for="forma3">Forma</label>
 						<select name="forma3">
 							<option value=""></option>
@@ -346,7 +391,7 @@
   							<option value="mixto">Mixto</option>
 						</select>
 						<br>
-						<label for="halo3">Halo Ecogénico</label>
+						<label for="halo3">Halo ecogénico</label>
 						<select name="halo3">
 							<option value="no" selected>No</option>
   							<option value="si">Sí</option>
@@ -381,6 +426,18 @@
 
 					<article class="descripcionnodulos" id='4'>
 						<H3>Características del nodulo 4</H3>
+						<label for="zona4">Cuadrante mamario</label>
+						<select name="zona4">
+							<option value=""></option>
+  							<option value="cse">Superior Externo</option>
+  							<option value="csi">Superior Interno</option>
+  							<option value="cie">Inferior Externo</option>
+  							<option value="cii">Inferior Interno</option>
+						</select>
+						<br>
+						<label for="radial4">Radial</label>
+						<input type="text" name="radial4" placeholder="radial">
+						<br>
 						<label for="forma4">Forma</label>
 						<select name="forma4">
 							<option value=""></option>
@@ -462,6 +519,18 @@
 
 					<article class="descripcionnodulos" id='5'>
 						<H3>Características del nodulo 5</H3>
+						<label for="zona5">Cuadrante mamario</label>
+						<select name="zona5">
+							<option value=""></option>
+  							<option value="cse">Superior Externo</option>
+  							<option value="csi">Superior Interno</option>
+  							<option value="cie">Inferior Externo</option>
+  							<option value="cii">Inferior Interno</option>
+						</select>
+						<br>
+						<label for="radial5">Radial</label>
+						<input type="text" name="radial5" placeholder="radial">
+						<br>
 						<label for="forma5">Forma</label>
 						<select name="forma5">
 							<option value=""></option>
@@ -508,7 +577,7 @@
   							<option value="mixto">Mixto</option>
 						</select>
 						<br>
-						<label for="halo5">Halo Ecogénico</label>
+						<label for="halo5">Halo ecogénico</label>
 						<select name="halo5">
 							<option value="no" selected>No</option>
   							<option value="si">Sí</option>
@@ -549,10 +618,10 @@
 				</section>
 
 				<section class="seccion" id=tab4>
-					<h1>Información Adicional</h1>
+					<h1>Información adicional</h1>
 					<label for="mensaje">Información que se quiera añadir sobre la paciente o la ecografía</label>
 					<br>
-					<textarea name="mensaje" placeholder="Mensaje"></textarea>
+					<textarea name="mensaje" placeholder="mensaje"></textarea>
 				</section>
 				<input type="submit" value="Enviar">
 			</form>
